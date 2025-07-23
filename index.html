@@ -3,50 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chatbot com Botão Flutuante</title>
+  <title>Chatbot Virtual</title>
 
-  <!-- Estilo do site -->
+  <!-- Google Fonts para visual moderno -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     header {
-      background-color: #2196f3;
-      padding: 1rem;
+      padding: 1.5rem;
+      background-color: rgba(33, 150, 243, 0.9);
       text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
 
     main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 2rem;
-      text-align: center;
+    }
+
+    #mcontext {
+      display: none;
+      width: 100%;
+      max-width: 480px;
+      height: 640px;
+      background-color: #000;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      z-index: 999;
     }
 
     footer {
-      background-color: #1c1c1c;
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 1rem;
       text-align: center;
+      font-size: 0.9rem;
     }
 
-    /* Container do chatbot (inicialmente escondido) */
-    #mcontext {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      width: 360px;
-      height: 600px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      z-index: 999;
-      background-color: #000;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    /* Botão flutuante */
     #openChatBtn {
       position: fixed;
       bottom: 20px;
@@ -55,12 +69,12 @@
       color: white;
       border: none;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
+      width: 64px;
+      height: 64px;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       cursor: pointer;
       z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       transition: background-color 0.3s;
     }
 
@@ -72,24 +86,19 @@
 <body>
 
   <header>
-    <h1>Bem-vindo ao Chatbot</h1>
+    Bem-vindo ao Chatbot Virtual 💬
   </header>
 
   <main>
-    <p>Clique no escudo para conversar com nosso assistente virtual.</p>
+    <div id="mcontext"></div>
   </main>
 
   <footer>
-    &copy; 2025 - SeuNome ou Empresa
+    &copy; 2025 - Desenvolvido por Isaac8484
   </footer>
 
-  <!-- Botão flutuante com símbolo de escudo 🛡️ -->
   <button id="openChatBtn">🛡️</button>
 
-  <!-- Chatbot oculto inicialmente -->
-  <div id="mcontext"></div>
-
-  <!-- Script do chatbot -->
   <script
     mode="embed"
     isolate="true"
@@ -104,7 +113,6 @@
     style="min-height: 480px">
   </script>
 
-  <!-- Script para abrir/fechar o chat -->
   <script>
     const btn = document.getElementById('openChatBtn');
     const chat = document.getElementById('mcontext');
